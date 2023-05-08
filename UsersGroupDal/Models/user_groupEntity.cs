@@ -12,7 +12,7 @@ namespace UsersGroupDal.Models
         [Required]
         public int code { get; set; }
 
-        [Column(TypeName = "nvarchar(10000)")]
+        [Column(TypeName = "char(1000)")]
         public string description { get; set; }
     }
 }

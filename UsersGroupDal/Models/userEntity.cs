@@ -19,13 +19,13 @@ namespace UsersGroupDal.Models
 
         [Required]
         [ForeignKey(nameof(user_group_id))]
-        public int user_group { get; set; }
+        public user_groupEntity user_group { get; set; }
 
         public int user_group_id { get; set; }
 
         [Required]
         [ForeignKey(nameof(user_state_id))]
-        public int user_state { get; set; }
+        public user_stateEntity user_state { get; set; }
 
         public int user_state_id { get; set; }
     }
