@@ -14,6 +14,7 @@ namespace UsersGroupDal
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("UsersGroupDbConnect");
+            //optionsBuilder.UseInMemoryDatabase("AppealDb");
         }
     }
 }

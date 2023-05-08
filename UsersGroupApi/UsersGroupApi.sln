@@ -3,9 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersGroupApi", "UsersGroupApi.csproj", "{C0A940B6-3ACA-42EC-A004-4D702A922B6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsersGroupApi", "UsersGroupApi.csproj", "{C0A940B6-3ACA-42EC-A004-4D702A922B6C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7555E98B-9237-4DA1-835D-9371E816C92E} = {7555E98B-9237-4DA1-835D-9371E816C92E}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersGroupDal", "..\UsersGroupDal\UsersGroupDal.csproj", "{7555E98B-9237-4DA1-835D-9371E816C92E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsersGroupDal", "..\UsersGroupDal\UsersGroupDal.csproj", "{7555E98B-9237-4DA1-835D-9371E816C92E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
