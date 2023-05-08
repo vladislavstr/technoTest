@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using UsersGroupApi.Models;
 using UsersGroupDal;
@@ -26,6 +26,12 @@ namespace UsersGroupApi.Controllers
                 var allUsers = _userService.GetAllUsers();
                 var allUsersDto = _mapper.Map<List<userEntity>>(allUsers);
                 return Ok(allUsersDto);
+        }
+
+        [HttpGet("{id:int}", Name = "GetUserById")]
+        public ActionResult GetUserById(int id)
+        {
+            return Ok(_userService.GetUserById(id));
         }
     }
 }
