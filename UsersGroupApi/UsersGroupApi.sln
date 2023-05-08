@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersGroupApi", "UsersGroupApi.csproj", "{C0A940B6-3ACA-42EC-A004-4D702A922B6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersGroupDal", "..\UsersGroupDal\UsersGroupDal.csproj", "{7555E98B-9237-4DA1-835D-9371E816C92E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C0A940B6-3ACA-42EC-A004-4D702A922B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0A940B6-3ACA-42EC-A004-4D702A922B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0A940B6-3ACA-42EC-A004-4D702A922B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7555E98B-9237-4DA1-835D-9371E816C92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7555E98B-9237-4DA1-835D-9371E816C92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7555E98B-9237-4DA1-835D-9371E816C92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7555E98B-9237-4DA1-835D-9371E816C92E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
