@@ -1,4 +1,4 @@
-﻿using UsersGroupDal.Models;
+using UsersGroupDal.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace UsersGroupDal
@@ -14,7 +14,6 @@ namespace UsersGroupDal
 
         public List<userEntity> GetAllUsers()
         {
-
             var result = new List<userEntity>();
 
             result = _context.Users

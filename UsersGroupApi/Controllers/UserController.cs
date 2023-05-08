@@ -33,5 +33,12 @@ namespace UsersGroupApi.Controllers
         {
             return Ok(_userService.GetUserById(id));
         }
+
+        [HttpDelete("{id:int}", Name = "DeleteUserById")]
+        public IActionResult DeleteUserById(int id)
+        {
+            _userService.DeleteUserById(id);
+            return NoContent();
+        }
     }
 }
