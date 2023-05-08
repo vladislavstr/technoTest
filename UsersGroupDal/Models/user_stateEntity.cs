@@ -10,9 +10,10 @@ namespace UsersGroupDal.Models
         public int id { get; set; }
 
         [Required]
-        public int code { get; set; }
+        [Column(TypeName = "char(100)")]
+        public string code { get; set; }
 
         [Column(TypeName = "char(1000)")]
-        public string description { get; set; }
+        public string? description { get; set; }
     }
 }
