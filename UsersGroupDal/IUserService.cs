@@ -8,6 +8,8 @@ namespace UsersGroupDal
 
         userEntity GetUserById(int id);
 
+        userEntity AddUser(userEntity user);
+
         void DeleteUserById(int id);
     }
 }

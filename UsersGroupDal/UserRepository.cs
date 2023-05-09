@@ -33,6 +33,17 @@ namespace UsersGroupDal
             .Single(u => u.id == id);
         }
 
+        public userEntity AddUser(userEntity user)
+        {
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            return _context.Users
+                .Include(u => u.user_group)
+                .Include(u => u.user_state)
+                .Single(u => u.id == user.id);
+        }
+
         public void DeleteUserById(int id)
         {
                 var user = _context.Users.Single(u => u.id == id);

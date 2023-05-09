@@ -40,5 +40,16 @@ namespace UsersGroupApi.Controllers
             _userService.DeleteUserById(id);
             return NoContent();
         }
+
+        [HttpPost("AddUser", Name = "AddUser")]
+        public ActionResult<userDto> AddUser(userDto user)
+        {
+            user.created_date = DateTime.UtcNow;
+            var userRequst = _mapper.Map<userEntity>(user);
+            var addUserResponse = _userService.AddUser(userRequst);
+            var addUserResponseDto = _mapper.Map<userDto>(addUserResponse);
+
+            return Created(new Uri("api/User", UriKind.Relative), addUserResponseDto);
+        }
     }
 }
