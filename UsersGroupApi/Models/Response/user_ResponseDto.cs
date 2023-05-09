@@ -1,12 +1,10 @@
-﻿namespace UsersGroupApi.Models
+﻿namespace UsersGroupApi.Models.Response
 {
-    public class userDto
+    public class user_ResponseDto
     {
         public int id { get; set; }
 
         public string login { get; set; }
-
-        public string password { get; set; }
 
         public DateTime created_date { get; set; }
 

@@ -1,6 +1,6 @@
-﻿namespace UsersGroupApi.Models
+﻿namespace UsersGroupApi.Models.Response
 {
-    public class user_groupDto
+    public class user_group_ResponseDto
     {
         public int id { get; set; }
 
