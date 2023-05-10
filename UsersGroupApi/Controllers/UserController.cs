@@ -43,15 +43,25 @@ namespace UsersGroupApi.Controllers
         }
 
         [HttpPost(Name = "AddUser")]
-        public ActionResult<UserResponseDto> AddUser(UserRequestDto user)
+        public async Task<UserResponseDto> AddUser(UserRequestDto user)
         {
+            bool CheckAdmin = await _userService.CheckAdminAsync();
+            if (CheckAdmin)
+            {
             var userRequst = _mapper.Map<UserEntity>(user);
+
             userRequst.CreatedDate = DateTime.UtcNow;
             userRequst.UserStateId = 1;
+
             var addUserResponse = _userService.AddUser(userRequst);
             var addUserResponseDto = _mapper.Map<UserResponseDto>(addUserResponse);
 
-            return Created(new Uri("api/User", UriKind.Relative), addUserResponseDto);
+            return addUserResponseDto;
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
     }
 }

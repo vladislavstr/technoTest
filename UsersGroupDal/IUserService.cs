@@ -11,5 +11,7 @@ namespace UsersGroupDal
         UserEntity AddUser(UserEntity user);
 
         void DeleteUserById(int id);
+
+        Task<bool> CheckAdminAsync();
     }
 }

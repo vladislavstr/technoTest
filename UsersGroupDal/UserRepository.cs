@@ -50,5 +50,12 @@ namespace UsersGroupDal
                 user.UserStateId = 2;
                 _context.SaveChanges();
         }
+
+        public async Task<bool> CheckAdminAsync()
+        {
+            return _context.Users
+                    .ToList()
+                    .Any(x => x.UserGroupId == 1 && x.UserStateId == 1);
+        }
     }
 }
