@@ -15,36 +15,45 @@ namespace UsersGroupBll
             _mapper = mapper;
             _userRepository = userRepository;
         }
-        public List<User> GetAllUsers()
+        public async Task<List<User>> GetAllUsers()
         {
 
-            var usersEntity =  _userRepository.GetAllUsers();
+            var usersEntity =  await _userRepository.GetAllUsers();
             var result = _mapper.Map<List<User>>(usersEntity);
 
             return result;
         }
 
-        public User GetUserById(int id)
+        public async Task<User> GetUserById(int id)
         {
-            UserEntity userEntity =  _userRepository.GetUserById(id);
+            UserEntity userEntity = await _userRepository.GetUserById(id);
 
             var result = _mapper.Map<User>(userEntity);
 
             return result;
         }
 
-        public User AddUser(User user)
+        public async Task<User> AddUser(User user)
         {
+            //bool CheckAdmin = await _userRepository.CheckAdminAsync();
+            if (!await _userRepository.CheckAdminAsync())
+            {
+
             var userEntity = _mapper.Map<UserEntity>(user);
             var callback = _userRepository.AddUser(userEntity);
             var result = _mapper.Map<User>(callback);
 
             return result;
+            }
+            else
+            {
+                throw new Exception();
+            }
 
         }
-        public void DeleteUserById(int id)
+        public async void DeleteUserById(int id)
         {
-            var existUser =  _userRepository.GetUserById(id);
+            var existUser =  await _userRepository.GetUserById(id);
             if (existUser is null)
             {
                 throw new Exception($"Пользователя с id:{id} не существует");

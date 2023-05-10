@@ -4,11 +4,11 @@ namespace UsersGroupBll
 {
     public interface IUserService
     {
-        List<User> GetAllUsers();
+        Task<List<User>> GetAllUsers();
 
-        User GetUserById(int id);
+        Task <User> GetUserById(int id);
 
-        User AddUser(User user);
+        Task<User> AddUser(User user);
 
         void DeleteUserById(int id);
     }

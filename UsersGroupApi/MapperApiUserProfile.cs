@@ -9,8 +9,10 @@ namespace UsersGroupApi
     {
         public MapperApiUserProfile()
         {
-            CreateMap<User, UserResponseDto>();
             CreateMap<UserRequestDto, User>();
+            CreateMap<User, UserRequestDto>();
+            CreateMap<User, UserResponseDto>();
+            CreateMap<UserResponseDto, User>();
         }
     }
 }

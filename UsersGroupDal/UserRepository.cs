@@ -12,7 +12,7 @@ namespace UsersGroupDal
             _context = context;
         }
 
-        public List<UserEntity> GetAllUsers()
+        public async Task<List<UserEntity>> GetAllUsers()
         {
             var result = new List<UserEntity>();
 
@@ -25,9 +25,9 @@ namespace UsersGroupDal
             return result;
         }
 
-        public UserEntity GetUserById(int id)
+        public async Task<UserEntity> GetUserById(int id)
         {
-            return _context.Users
+             return _context.Users
             .Include(u => u.UserGroup)
             .Include(u => u.UserState)
             .Single(u => u.Id == id);
@@ -44,7 +44,7 @@ namespace UsersGroupDal
                 .Single(u => u.Id == user.Id);
         }
 
-        public void DeleteUserById(int id)
+        public async void DeleteUserById(int id)
         {
                 var user = _context.Users.Single(u => u.Id == id);
                 user.UserStateId = 2;

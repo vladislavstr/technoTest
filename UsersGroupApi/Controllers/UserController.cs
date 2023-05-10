@@ -1,9 +1,9 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using UsersGroupApi.Models.Response;
 using UsersGroupApi.Models.Request;
-using UsersGroupBll.Models;
+using UsersGroupApi.Models.Response;
 using UsersGroupBll;
+using UsersGroupBll.Models;
 
 namespace UsersGroupApi.Controllers
 {
@@ -22,45 +22,51 @@ namespace UsersGroupApi.Controllers
         }
 
         [HttpGet(Name = "GetAllUsers")]
-        public ActionResult<List<UserResponseDto>> GetAllUsers()
+        public async Task<ActionResult<List<UserResponseDto>>> GetAllUsers()
         {
-                var allUsers = _userService.GetAllUsers();
-                var allUsersDto = _mapper.Map<List<UserResponseDto>>(allUsers);
-                return Ok(allUsersDto);
+            var allUsers = await _userService.GetAllUsers();
+            var allUsersResponseDto = _mapper.Map<List<UserResponseDto>>(allUsers);
+            return Ok(allUsersResponseDto);
         }
 
         [HttpGet("{id:int}", Name = "GetUserById")]
-        public ActionResult GetUserById(int id)
+        public async Task<ActionResult<UserResponseDto>> GetUserById(int id)
         {
-            return Ok(_userService.GetUserById(id));
+
+            var user = await _userService.GetUserById(id);
+            var userResponse = _mapper.Map<UserResponseDto>(user);
+            return Ok(userResponse);
         }
 
         [HttpDelete("{id:int}", Name = "DeleteUserById")]
-        public IActionResult DeleteUserById(int id)
+        public async Task<IActionResult> DeleteUserById(int id)
         {
             _userService.DeleteUserById(id);
             return NoContent();
         }
 
         [HttpPost(Name = "AddUser")]
-        public async Task<UserResponseDto> AddUser(UserRequestDto user)
+        public async Task<ActionResult<UserResponseDto>> AddUser(UserRequestDto userReques)
         {
-            bool CheckAdmin = await _userService.CheckAdminAsync();
-            if (CheckAdmin)
+            try
             {
 
-            var userRequst = _mapper.Map<User>(user);
-            userRequst.CreatedDate = DateTime.UtcNow;
-            userRequst.UserStateId = 1;
+                var user = _mapper.Map<User>(userReques);
+                user.CreatedDate = DateTime.UtcNow;
+                user.UserStateId = 1;
 
-            var addUserResponse = _userService.AddUser(userRequst);
-            var addUserResponseDto = _mapper.Map<UserResponseDto>(addUserResponse);
+                var addUserResponse = await _userService.AddUser(user);
+                var addUserResponseDto = _mapper.Map<UserResponseDto>(addUserResponse);
 
-            return addUserResponseDto;
+                return addUserResponseDto;
             }
-            else
+            catch (ArgumentException ex)
             {
-                throw new Exception();
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

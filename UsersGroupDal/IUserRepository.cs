@@ -4,9 +4,9 @@ namespace UsersGroupDal
 {
     public interface IUserRepository
     {
-        List<UserEntity> GetAllUsers();
+        Task<List<UserEntity>> GetAllUsers();
 
-        UserEntity GetUserById(int id);
+        Task<UserEntity> GetUserById(int id);
 
         UserEntity AddUser(UserEntity user);
 
