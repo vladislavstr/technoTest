@@ -2,8 +2,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using UsersGroupApi.Models.Response;
 using UsersGroupApi.Models.Request;
-using UsersGroupDal;
-using UsersGroupDal.Models;
+using UsersGroupBll.Models;
+using UsersGroupBll;
 
 namespace UsersGroupApi.Controllers
 {
@@ -48,8 +48,8 @@ namespace UsersGroupApi.Controllers
             bool CheckAdmin = await _userService.CheckAdminAsync();
             if (CheckAdmin)
             {
-            var userRequst = _mapper.Map<UserEntity>(user);
 
+            var userRequst = _mapper.Map<User>(user);
             userRequst.CreatedDate = DateTime.UtcNow;
             userRequst.UserStateId = 1;
 
