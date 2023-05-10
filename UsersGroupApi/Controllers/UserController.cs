@@ -1,12 +1,13 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using UsersGroupApi.Models;
+using UsersGroupApi.Models.Response;
+using UsersGroupApi.Models.Request;
 using UsersGroupDal;
 using UsersGroupDal.Models;
 
 namespace UsersGroupApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -20,11 +21,11 @@ namespace UsersGroupApi.Controllers
             _userService = userService;
         }
 
-        [HttpGet("AllUsers", Name = "GetAllUsers")]
-        public ActionResult<List<userDto>> GetAllUsers()
+        [HttpGet(Name = "GetAllUsers")]
+        public ActionResult<List<UserResponseDto>> GetAllUsers()
         {
                 var allUsers = _userService.GetAllUsers();
-                var allUsersDto = _mapper.Map<List<userEntity>>(allUsers);
+                var allUsersDto = _mapper.Map<List<UserResponseDto>>(allUsers);
                 return Ok(allUsersDto);
         }
 
@@ -41,13 +42,14 @@ namespace UsersGroupApi.Controllers
             return NoContent();
         }
 
-        [HttpPost("AddUser", Name = "AddUser")]
-        public ActionResult<userDto> AddUser(userDto user)
+        [HttpPost(Name = "AddUser")]
+        public ActionResult<UserResponseDto> AddUser(UserRequestDto user)
         {
-            user.created_date = DateTime.UtcNow;
-            var userRequst = _mapper.Map<userEntity>(user);
+            var userRequst = _mapper.Map<UserEntity>(user);
+            userRequst.CreatedDate = DateTime.UtcNow;
+            userRequst.UserStateId = 1;
             var addUserResponse = _userService.AddUser(userRequst);
-            var addUserResponseDto = _mapper.Map<userDto>(addUserResponse);
+            var addUserResponseDto = _mapper.Map<UserResponseDto>(addUserResponse);
 
             return Created(new Uri("api/User", UriKind.Relative), addUserResponseDto);
         }

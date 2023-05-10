@@ -12,42 +12,42 @@ namespace UsersGroupDal
             _context = context;
         }
 
-        public List<userEntity> GetAllUsers()
+        public List<UserEntity> GetAllUsers()
         {
-            var result = new List<userEntity>();
+            var result = new List<UserEntity>();
 
             result = _context.Users
-                .Include(u => u.user_group)
-                .Include(u => u.user_state)
+                .Include(u => u.UserGroup)
+                .Include(u => u.UserState)
                 .AsNoTracking()
                 .ToList();
 
             return result;
         }
 
-        public userEntity GetUserById(int id)
+        public UserEntity GetUserById(int id)
         {
             return _context.Users
-            .Include(u => u.user_group)
-            .Include(u => u.user_state)
-            .Single(u => u.id == id);
+            .Include(u => u.UserGroup)
+            .Include(u => u.UserState)
+            .Single(u => u.Id == id);
         }
 
-        public userEntity AddUser(userEntity user)
+        public UserEntity AddUser(UserEntity user)
         {
             _context.Users.Add(user);
             _context.SaveChanges();
 
             return _context.Users
-                .Include(u => u.user_group)
-                .Include(u => u.user_state)
-                .Single(u => u.id == user.id);
+                .Include(u => u.UserGroup)
+                .Include(u => u.UserState)
+                .Single(u => u.Id == user.Id);
         }
 
         public void DeleteUserById(int id)
         {
-                var user = _context.Users.Single(u => u.id == id);
-                user.user_state_id = 2;
+                var user = _context.Users.Single(u => u.Id == id);
+                user.UserStateId = 2;
                 _context.SaveChanges();
         }
     }

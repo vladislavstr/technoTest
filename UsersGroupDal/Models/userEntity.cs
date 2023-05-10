@@ -3,30 +3,30 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UsersGroupDal.Models
 {
-    public class userEntity
+    public class UserEntity
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string login { get; set; }
+        public string Login { get; set; }
 
         [Required]
-        public string password { get; set; }
+        public string Password { get; set; }
 
         [Required]
-        public DateTime created_date { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         [Required]
-        [ForeignKey(nameof(user_group_id))]
-        public user_groupEntity user_group { get; set; }
+        [ForeignKey(nameof(UserGroupId))]
+        public UserGroupEntity UserGroup { get; set; }
 
-        public int user_group_id { get; set; }
+        public int UserGroupId { get; set; }
 
         [Required]
-        [ForeignKey(nameof(user_state_id))]
-        public user_stateEntity user_state { get; set; }
+        [ForeignKey(nameof(UserStateId))]
+        public UserStateEntity UserState { get; set; }
 
-        public int user_state_id { get; set; }
+        public int UserStateId { get; set; }
     }
 }

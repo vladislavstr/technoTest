@@ -4,11 +4,11 @@ namespace UsersGroupDal
 {
     public interface IUserService
     {
-        List<userEntity> GetAllUsers();
+        List<UserEntity> GetAllUsers();
 
-        userEntity GetUserById(int id);
+        UserEntity GetUserById(int id);
 
-        userEntity AddUser(userEntity user);
+        UserEntity AddUser(UserEntity user);
 
         void DeleteUserById(int id);
     }
