@@ -2,8 +2,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using UsersGroupApi.Models.Response;
 using UsersGroupApi.Models.Request;
-using UsersGroupDal;
-using UsersGroupDal.Models;
+using UsersGroupBll.Models;
+using UsersGroupBll;
 
 namespace UsersGroupApi.Controllers
 {
@@ -45,7 +45,7 @@ namespace UsersGroupApi.Controllers
         [HttpPost(Name = "AddUser")]
         public ActionResult<UserResponseDto> AddUser(UserRequestDto user)
         {
-            var userRequst = _mapper.Map<UserEntity>(user);
+            var userRequst = _mapper.Map<User>(user);
             userRequst.CreatedDate = DateTime.UtcNow;
             userRequst.UserStateId = 1;
             var addUserResponse = _userService.AddUser(userRequst);

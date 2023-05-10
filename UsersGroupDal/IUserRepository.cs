@@ -2,7 +2,7 @@
 
 namespace UsersGroupDal
 {
-    public interface IUserService
+    public interface IUserRepository
     {
         List<UserEntity> GetAllUsers();
 

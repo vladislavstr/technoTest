@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace UsersGroupDal
 {
-    public class UserRepository : IUserService
+    public class UserRepository : IUserRepository
     {
         private static UserContext _context;
 
