@@ -1,5 +1,5 @@
-using UsersGroupDal.Models;
 using Microsoft.EntityFrameworkCore;
+using UsersGroupDal.Models;
 
 namespace UsersGroupDal
 {

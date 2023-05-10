@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using UsersGroupApi.Models.Response;
 using UsersGroupApi.Models.Request;
+using UsersGroupApi.Models.Response;
 using UsersGroupBll.Models;
 
 namespace UsersGroupApi
@@ -10,9 +10,7 @@ namespace UsersGroupApi
         public MapperApiUserProfile()
         {
             CreateMap<UserRequestDto, User>();
-            //CreateMap<User, UserRequestDto>();
             CreateMap<User, UserResponseDto>();
-            //CreateMap<UserResponseDto, User>();
         }
     }
 }
