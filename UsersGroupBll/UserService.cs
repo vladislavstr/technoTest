@@ -1,7 +1,7 @@
-﻿using UsersGroupBll.Models;
-using UsersGroupDal.Models;
+﻿using AutoMapper;
+using UsersGroupBll.Models;
 using UsersGroupDal;
-using AutoMapper;
+using UsersGroupDal.Models;
 
 namespace UsersGroupBll
 {
@@ -18,7 +18,7 @@ namespace UsersGroupBll
         public async Task<List<User>> GetAllUsers()
         {
 
-            var usersEntity =  await _userRepository.GetAllUsers();
+            var usersEntity = await _userRepository.GetAllUsers();
             var result = _mapper.Map<List<User>>(usersEntity);
 
             return result;
@@ -35,14 +35,14 @@ namespace UsersGroupBll
 
         public async Task<User> AddUser(User user)
         {
-            if (!await _userRepository.CheckAdminAsync() || user.UserGroupId==2)
+            if (!await _userRepository.CheckAdminAsync() || user.UserGroupId == 2)
             {
 
-            var userEntity = _mapper.Map<UserEntity>(user);
-            var callback = await _userRepository.AddUser(userEntity);
-            var result = _mapper.Map<User>(callback);
+                var userEntity = _mapper.Map<UserEntity>(user);
+                var callback = await _userRepository.AddUser(userEntity);
+                var result = _mapper.Map<User>(callback);
 
-            return result;
+                return result;
             }
             else
             {
@@ -52,7 +52,7 @@ namespace UsersGroupBll
         }
         public async void DeleteUserById(int id)
         {
-            var existUser =  await _userRepository.GetUserById(id);
+            var existUser = await _userRepository.GetUserById(id);
             if (existUser is null)
             {
                 throw new Exception($"Пользователя с id:{id} не существует");

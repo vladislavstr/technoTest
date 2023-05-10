@@ -1,5 +1,5 @@
-using UsersGroupDal.Models;
 using Microsoft.EntityFrameworkCore;
+using UsersGroupDal.Models;
 
 namespace UsersGroupDal
 {
@@ -10,6 +10,18 @@ namespace UsersGroupDal
         public UserRepository(UserContext context)
         {
             _context = context;
+
+            //UserGroupEntity defaultUserGroupEntity_1 = new UserGroupEntity { Code = "Admin" };
+            //UserGroupEntity defaultUserGroupEntity_2 = new UserGroupEntity { Code = "User" };
+            //UserStateEntity defaultUserStateEntity_1 = new UserStateEntity { Code = "Active" };
+            //UserStateEntity defaultUserStateEntity_2 = new UserStateEntity { Code = "Blocked" };
+
+            //_context.Groups.Add(defaultUserGroupEntity_1);
+            //_context.Groups.Add(defaultUserGroupEntity_2);
+            //_context.States.Add(defaultUserStateEntity_1);
+            //_context.States.Add(defaultUserStateEntity_2);
+
+            //_context.SaveChanges();
         }
 
         public async Task<List<UserEntity>> GetAllUsers()
@@ -27,10 +39,10 @@ namespace UsersGroupDal
 
         public async Task<UserEntity> GetUserById(int id)
         {
-             return _context.Users
-            .Include(u => u.UserGroup)
-            .Include(u => u.UserState)
-            .Single(u => u.Id == id);
+            return _context.Users
+           .Include(u => u.UserGroup)
+           .Include(u => u.UserState)
+           .Single(u => u.Id == id);
         }
 
         public async Task<UserEntity> AddUser(UserEntity user)
@@ -46,9 +58,9 @@ namespace UsersGroupDal
 
         public async void DeleteUserById(int id)
         {
-                var user = _context.Users.Single(u => u.Id == id);
-                user.UserStateId = 2;
-                _context.SaveChanges();
+            var user = _context.Users.Single(u => u.Id == id);
+            user.UserStateId = 2;
+            _context.SaveChanges();
         }
 
         public async Task<bool> CheckAdminAsync()
