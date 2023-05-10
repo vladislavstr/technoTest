@@ -35,7 +35,6 @@ namespace UsersGroupBll
 
         public async Task<User> AddUser(User user)
         {
-            //bool CheckAdmin = await _userRepository.CheckAdminAsync();
             if (!await _userRepository.CheckAdminAsync() || user.UserGroupId==2)
             {
 
@@ -47,7 +46,7 @@ namespace UsersGroupBll
             }
             else
             {
-                throw new Exception();
+                throw new Exception($"Админимтратор уже существует");
             }
 
         }
@@ -60,7 +59,6 @@ namespace UsersGroupBll
             }
 
             _userRepository.DeleteUserById(id);
-
         }
     }
 }
