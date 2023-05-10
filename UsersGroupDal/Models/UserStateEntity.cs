@@ -4,16 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UsersGroupDal.Models
 {
-    public class user_groupEntity
+    public class UserStateEntity
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [Column(TypeName = "varchar(100)")]
-        public string code { get; set; }
+        public string Code { get; set; }
 
         [Column(TypeName = "varchar(1000)")]
-        public string? description { get; set; }
+        public string? Description { get; set; }
     }
 }

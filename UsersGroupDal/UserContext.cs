@@ -5,11 +5,11 @@ namespace UsersGroupDal
 {
     public class UserContext : DbContext
     {
-        public DbSet<userEntity> Users { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
 
-        public DbSet<user_stateEntity> States { get; set; }
+        public DbSet<UserStateEntity> States { get; set; }
 
-        public DbSet<user_groupEntity> Groups { get; set; }
+        public DbSet<UserGroupEntity> Groups { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
