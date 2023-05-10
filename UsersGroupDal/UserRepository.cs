@@ -33,7 +33,7 @@ namespace UsersGroupDal
             .Single(u => u.Id == id);
         }
 
-        public UserEntity AddUser(UserEntity user)
+        public async Task<UserEntity> AddUser(UserEntity user)
         {
             _context.Users.Add(user);
             _context.SaveChanges();

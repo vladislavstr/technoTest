@@ -36,11 +36,11 @@ namespace UsersGroupBll
         public async Task<User> AddUser(User user)
         {
             //bool CheckAdmin = await _userRepository.CheckAdminAsync();
-            if (!await _userRepository.CheckAdminAsync())
+            if (!await _userRepository.CheckAdminAsync() || user.UserGroupId==2)
             {
 
             var userEntity = _mapper.Map<UserEntity>(user);
-            var callback = _userRepository.AddUser(userEntity);
+            var callback = await _userRepository.AddUser(userEntity);
             var result = _mapper.Map<User>(callback);
 
             return result;

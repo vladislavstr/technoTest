@@ -8,7 +8,7 @@ namespace UsersGroupDal
 
         Task<UserEntity> GetUserById(int id);
 
-        UserEntity AddUser(UserEntity user);
+        Task<UserEntity> AddUser(UserEntity user);
 
         void DeleteUserById(int id);
 

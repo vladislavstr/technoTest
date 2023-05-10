@@ -6,7 +6,7 @@ namespace UsersGroupBll
     {
         Task<List<User>> GetAllUsers();
 
-        Task <User> GetUserById(int id);
+        Task<User> GetUserById(int id);
 
         Task<User> AddUser(User user);
 

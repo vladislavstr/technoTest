@@ -1,4 +1,6 @@
-﻿namespace UsersGroupApi.Models.Response
+﻿using UsersGroupBll.Models;
+
+namespace UsersGroupApi.Models.Response
 {
     public class UserResponseDto
     {
@@ -8,8 +10,8 @@
 
         public DateTime CreatedDate { get; set; }
 
-        public int UserGroupId { get; set; }
+        public UserGroup UserGroup { get; set; }
 
-        public int UserStateId { get; set; }
+        public UserState UserState { get; set; }
     }
 }
